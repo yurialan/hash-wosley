@@ -16,5 +16,7 @@ hashentry **hashtable_create(); // retorna um vetor de Person.
 hashentry *hashtable_search(hashentry **table, int key);
 void hashtable_insert(hashentry **table, hashentry *entry);
 void hashtable_print(hashentry **table);
+void hashfile_fileinit();
+void hashfile_insert(int lineskip, hashentry *entry);
 
 #endif

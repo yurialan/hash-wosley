@@ -8,6 +8,7 @@ void menu()
 
     // Instancia a nova Hash
     hashentry** hash = hashtable_create();
+    hashfile_fileinit();
     //person.cpf = 6121232212;
 
     //hashtable_insert(hash, person);

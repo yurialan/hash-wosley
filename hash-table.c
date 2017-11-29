@@ -11,6 +11,29 @@ int hash_func(int key)
     return key % SIZE; //Tem que ver se pode usar esta função, Wasosley falou que n era pra usar mod...
 }
 
+void hashfile_fileinit()
+{
+    FILE *p = fopen("hashtable.txt", "r+");
+    int i;
+    for (i = 0; i < SIZE; i++) {
+        fprintf(p, "\n");
+    }
+}
+
+void hashfile_insert(int lineskip, hashentry *entry)
+{
+    FILE *p = fopen("hashtable.txt", "r+");
+    char buffer[255];
+    int i;
+    for (i = 0; i < lineskip-1; i++)
+    {
+        fgets(buffer, 255, p);
+    }
+   // fputs(entry->key, p);
+    printf("%s", buffer);
+    fclose(p);
+}
+
 // Construtor personalizado da Hash
 hashentry *hashentry_create(int key, char *name, int age, char *city)
 {
@@ -61,6 +84,7 @@ void hashtable_insert(hashentry **table, hashentry *entry)
     if (table[index] == NULL)
     {
         table[index] = entry;
+        hashfile_insert(index, entry);
         return;
     }
     else if (table[index]->next != NULL)
